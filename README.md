@@ -11,7 +11,8 @@
 
 # dj-app
 
-Dj app based on angular-electron repo
+Dj app 
+based on [maximegris' angular-electron template](https://github.com/maximegris/angular-electron)
 
 # Introduction
 
