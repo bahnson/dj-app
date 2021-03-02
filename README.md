@@ -11,8 +11,23 @@
 
 # dj-app
 
-Dj app 
-based on [maximegris' angular-electron template](https://github.com/maximegris/angular-electron)
+Dj app that helps with logging transitions and organizing sets based on your track library.
+The app is based on [maximegris' angular-electron template](https://github.com/maximegris/angular-electron)
+
+# Prerequisites
+
+You need:
+- Nodejs
+- Git 
+
+If you want to contribute and generate Angular modules, components, services, directives, you should install `@angular/cli` in npm global context.
+
+``` bash
+npm install -g @angular/cli
+```
+
+Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
+
 
 # Introduction
 
