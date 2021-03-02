@@ -1,0 +1,65 @@
+<div id="playing-tab" fxLayout="column" fxFill>
+
+    <track-search   [label]="'Choose starter ...'"
+                    [tracks]="tracks"
+                    [selectedTrack]="fromTrack"
+                    (onTrackSelected)="selectFromTrack($event)" 
+                    (onTrackCleared)="clearFromTrack()">
+    </track-search>
+
+    <track-search   [label]="'Choose starter ...'"
+                    [tracks]="tracks"
+                    [selectedTrack]="fromTrack"
+                    (onTrackSelected)="selectFromTrack($event)" 
+                    (onTrackCleared)="clearFromTrack()">
+    </track-search>
+    
+    <div id="current">
+    
+        <div class="label"> A: </div>
+    
+        <!--track  [track]="currentTrack" 
+                [disabled]="true" /-->
+    </div>
+    
+    <div id="nextCandidate">
+        
+        <div class="label"> B: </div>
+    
+        <!--track  [track]="nextCandidate"
+                [disabled]="true" /-->
+    </div>
+    
+    <div id="transition">
+    
+        Transition:
+    
+        <button id="select-track"
+                (click) = "selectCandidateAsNext()"> Select </button>
+    </div>
+    
+    <div id="next">
+        
+        <div id="next-from-known">
+            
+            Known Matches
+    
+            <div class="track-adder" (drop)="onDrop($event)" (dragover)="onDragOver($event)"> + </div>
+            
+            <!--track  *ngFor="let track of matchingTracks" 
+                    [track]="track"
+                    (click)="selectNextCandidate(track)" /-->
+        </div>
+    
+        <div id="next-from-all">
+            
+            All
+    
+            <div class="track-adder" (drop)="onDrop($event)" (dragover)="onDragOver($event)"> + </div>
+            
+            <!--track  *ngFor="let track of tracks" 
+                    [track]="track"
+                    (click)="selectNextCandidate(track)" /-->
+        </div>
+    </div>
+</div>

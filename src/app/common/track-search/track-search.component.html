@@ -1,0 +1,32 @@
+<mat-form-field fxFlex="grow" appearance="standard" [color]="'accent'">
+            
+    <mat-label> 
+        
+        <mat-icon> music_note </mat-icon> 
+        {{label}} 
+    
+    </mat-label>
+    
+    <input  type="text" placeholder="Type ..."
+            matInput [formControl]="formControl" 
+            [matAutocomplete]="auto"
+            [value]="inputTextForTrack(selectedTrack)"
+            [ngModel]="selectedTrack">
+            
+    <mat-autocomplete   autoActiveFirstOption 
+                        #auto="matAutocomplete"
+                        [displayWith]="inputTextForTrack"
+                        (optionSelected)="selectTrack($event.option.value)">
+        
+        <mat-option *ngFor="let track of filteredTracks | async"
+                    [value]="track">
+            
+            {{inputTextForTrack(track)}} 
+
+        </mat-option>
+    </mat-autocomplete>
+
+    <button type="button" mat-button *ngIf="selectedTrack" matSuffix mat-icon-button (click)="clearTrack()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>

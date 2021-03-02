@@ -1,0 +1,39 @@
+<mat-tab-group  id="dj-app-tab-group" 
+                [color]="'accent'" 
+                [backgroundColor]="'primary'"
+                [selectedIndex]="selectedIndex"
+                (selectedIndexChange)="onTabChanged($event)">
+
+    <mat-tab fxLayout="row" fxFill> 
+        
+        <ng-template mat-tab-label> <mat-icon> play_circle </mat-icon> </ng-template>
+        
+        <playing></playing>
+
+    </mat-tab>
+  
+    <mat-tab fxLayout="row" fxFill>
+        
+        <ng-template mat-tab-label> <mat-icon> link </mat-icon> </ng-template>
+        
+        <transitions></transitions>
+
+    </mat-tab>
+
+    <mat-tab fxLayout="row" fxFill>
+        
+        <ng-template mat-tab-label> <mat-icon> library_music </mat-icon> </ng-template>
+        
+        <library></library>
+        
+    </mat-tab>
+  
+    <mat-tab>
+
+        <ng-template mat-tab-label> <mat-icon> settings </mat-icon> </ng-template>
+        
+        <settings></settings>
+
+    </mat-tab>
+
+</mat-tab-group>

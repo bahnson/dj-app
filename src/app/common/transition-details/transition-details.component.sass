@@ -1,0 +1,33 @@
+mat-form-field.instruction-time
+    width: 70px
+    margin-left: 2px
+
+mat-form-field.instruction-text
+    margin-left: 2px
+    
+mat-card.transition-instruction
+    opacity: 0.9
+    padding: 10px
+
+mat-card.transition-instruction:hover
+    opacity: 1
+
+mat-card.transition-instruction mat-form-field.hidden
+    visibility: hidden
+
+mat-card.transition-instruction
+    margin-top: 1px
+    margin-bottom: 2px
+
+mat-card.transition-instruction div.instruction-buttons
+    position: absolute
+    top: 10px
+    right: 10px
+    
+    visibility: hidden
+    opacity: 0
+    transition: visibility 0s, opacity 0.3s linear
+
+mat-card.transition-instruction:hover div.instruction-buttons
+    visibility: visible
+    opacity: 1

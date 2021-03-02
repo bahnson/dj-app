@@ -1,0 +1,37 @@
+<div    id="transitions-tab" fxLayout="column" fxFill>
+    
+    <div    id="tracks" fxLayout="row">
+
+        <track-search   fxFlex="grow" 
+                        [label]="'From'"
+                        [tracks]="tracks"
+                        [selectedTrack]="fromTrack"
+                        (onTrackSelected)="selectFromTrack($event)" 
+                        (onTrackCleared)="clearFromTrack()">
+        </track-search>
+
+        <track-search   fxFlex="grow" 
+                        [label]="'To'"
+                        [tracks]="tracks"
+                        [selectedTrack]="toTrack"
+                        (onTrackSelected)="selectToTrack($event)" 
+                        (onTrackCleared)="clearToTrack()">
+        </track-search>
+    </div>
+    
+    <div    id="transition-details-wrapper" 
+            fxFlex="grow" 
+            fxLayout="row" 
+            style="overflow-y: scroll;">
+
+        <transition-details *ngIf="fromTrack && toTrack; else selectionNotice"
+                            [transition]="transition" 
+                            (onChange)="updateTransition()"
+                            fxFill>
+        </transition-details>
+
+        <ng-template #selectionNotice>
+            <div fxFill> Please select from and to </div>
+        </ng-template>
+    </div>
+</div>

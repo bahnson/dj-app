@@ -1,0 +1,76 @@
+<mat-card   *ngFor="let i of instructions"
+            fxLayout="column"
+            (mouseover)="onMouseOver(i)" 
+            (mouseleave)="onMouseLeave(i)"
+            [attr.disabled]="!isEditable(i)"
+            [class.mat-elevation-z24]="isEditable(i)"
+            [class.mat-elevation-z0]="!isEditable(i)"
+            class="transition-instruction">
+
+    <div class="instruction-buttons">
+
+        <button mat-icon-button 
+                *ngIf="isEditable(i)"
+                [color]="'accent'"
+                (click)="removeInstruction(i)">
+    
+            <mat-icon> clear </mat-icon>
+        </button>
+    </div>
+    
+    <div fxLayout="column">
+        
+        <div fxLayout="row">
+
+            <div fxFlex="grow" *ngFor="let side of ['From', 'To']">
+                
+                <mat-form-field appearance="fill" 
+                                class="instruction-time"
+                                [class.hidden]="!isTimeFieldDisplayed(i, side)"
+                                [color]="'accent'">
+
+                    <!-- time input see https://stackblitz.com/edit/angular-xbkeoc?file=src%2Fapp%2Fmy-duration-picker-directive.ts 
+                         OR: look at phone nr sample at https://material.angular.io/components/form-field/examples -->
+                    <input  fxFlex="none" 
+                            matInput
+                            disabled="{{ !isEditable(i) }}"
+                            readonly="{{ !isEditable(i) }}"
+                            [(ngModel)]="i['time'+ side]"
+                            (ngModelChange)="onDetailsChanged()">
+
+                </mat-form-field>
+
+            </div>
+        </div>
+
+        <div fxLayout="row">
+                
+                <mat-form-field fxFlex="grow" 
+                                *ngFor="let side of ['From', 'To']"
+                                appearance="fill" 
+                                class="instruction-text"
+                                [class.hidden]="!isTextFieldDisplayed(i, side)"
+                                [color]="'accent'">
+            
+                    <textarea   matInput
+                                cdkTextareaAutosize
+                                disabled="{{ !isEditable(i) }}"
+                                readonly="{{ !isEditable(i) }}"
+                                style="overflow: hidden;"
+                                [(ngModel)]="i['text'+ side]"
+                                (ngModelChange)="onDetailsChanged()"> 
+                    </textarea>
+                    
+                </mat-form-field> 
+        </div>
+    </div>
+
+</mat-card>
+
+<button mat-icon-button 
+        [color]="'accent'"
+        (click)="addNewInstruction()">
+
+        <mat-icon> add </mat-icon>
+</button>
+

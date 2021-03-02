@@ -1,0 +1,24 @@
+html, body
+    height: 100%
+    margin: 0
+
+*, textarea[disabled="true"], input[disabled="true"]
+    user-select: none
+
+::-webkit-scrollbar 
+    width: 8px
+    overflow-y: scroll
+    background: inherit
+
+::-webkit-scrollbar-thumb
+    background: linen // TODO theme primary or blended
+    border-radius: 10px
+
+mat-card.transition-instruction div.mat-form-field-wrapper
+    margin-bottom: -1.25em // Hack to get rid of padding-bottom
+
+mat-card.transition-instruction div.mat-form-field-flex
+    padding-top: 0px
+    padding-bottom: 0px
+    border-radius: 0px
+

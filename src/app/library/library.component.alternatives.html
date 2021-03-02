@@ -1,0 +1,104 @@
+<div    id="track-library-tab" 
+        fxLayout="column" fxFill
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event)"
+        (dragleave)="draggedOver = false"    
+        [ngClass]="{'dragged-over': draggedOver}">
+
+    <div    id="filter" fxLayout="row">
+        <!-- TODO filter option -->
+        <mat-form-field fxFlex="grow" appearance="standard" [color]="'accent'">
+            
+            <mat-label> 
+                
+                <mat-icon> music_note </mat-icon> 
+                Filter 
+            
+            </mat-label>
+             
+            <input  type="text" placeholder="Type ..."
+                    matInput 
+                    [(ngModel)]="filterString">
+                    
+            
+            <button type="button" mat-button *ngIf="filterString" matSuffix mat-icon-button (click)="filterString = ''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+</div>
+<div    id="transition-details-wrapper" 
+        fxFlex="grow" 
+        fxLayout="row" 
+        style="overflow-y: scroll;">
+        
+        <mat-selection-list [multiple]="false" fxFill>
+        
+            <mat-list-option *ngFor="let track of tracks" (mouseover)="selectedTrack = track">
+            
+                <mat-icon mat-list-icon> music_note </mat-icon>
+                <div mat-line>{{track.title}}</div>
+                <div mat-line> {{track.artist}} </div>
+    
+                <!--div class="track-properties" >
+                    
+                    <mat-slider [max]="5"
+                                [min]="-5"
+                                [step]="0.5"
+                                [thumbLabel]="true"
+                                [tickInterval]="2"
+                                [(ngModel)]="track.trim"
+                                (change)="updateTrack(track)">
+                    </mat-slider>
+    
+                    <mat-icon   *ngFor="let s of [1,2,3,4,5]; index as i"
+                                (click)="track.stars = i+1; updateTrack()"
+                                (mouseover)="selectedStars = i + 1" 
+                                (mouseleave)="selectedStars = 0"> 
+                        
+                        {{ i < track.stars ? 'star' : 'star_border' }} 
+                    </mat-icon>
+                </div-->
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <!-- looking neat, but bad performance
+    <mat-accordion class="example-headers-align">
+        
+        <mat-expansion-panel    *ngFor="let track of tracks" 
+                                [expanded]="selectedTrack === track" 
+                                (opened)="selectedTrack = track" 
+                                hideToggle>
+            
+            <mat-expansion-panel-header>
+            
+                <mat-panel-title>
+                    <mat-icon mat-list-icon> music_note </mat-icon>
+                    <div mat-line>{{track.id}}</div>
+                
+                </mat-panel-title>
+                
+            </mat-expansion-panel-header>
+      
+            <mat-slider [max]="5"
+                        [min]="-5"
+                        [step]="0.5"
+                        [thumbLabel]="true"
+                        [tickInterval]="2"
+                        [(ngModel)]="track.trim"
+                        (change)="updateTrack(track)">
+            </mat-slider>
+
+            <mat-icon   *ngFor="let s of [1,2,3,4,5]; index as i"
+                        (click)="track.stars = i+1; updateTrack()"
+                        (mouseover)="selectedStars = i + 1" 
+                        (mouseleave)="selectedStars = 0"> 
+            
+                {{ i < track.stars ? 'star' : 'star_border' }} 
+            </mat-icon>
+
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+    -->
+</div>
