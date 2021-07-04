@@ -2,7 +2,7 @@
 let app = require('electron').remote.app
 let fs = require('fs')
 
-const appDataPath = app.getPath('appData') + '/dj-app'
+const appDataPath = app.getAppPath() + '/src/data' // alternative: app.getPath('appData') + '/dj-app'
 
 if (!fs.existsSync(appDataPath)) {
     fs.mkdirSync(appDataPath)
