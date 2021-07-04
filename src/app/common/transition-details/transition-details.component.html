@@ -68,6 +68,7 @@
 </mat-card>
 
 <button mat-icon-button 
+        *ngIf="editable"
         [color]="'accent'"
         (click)="addNewInstruction()">
 

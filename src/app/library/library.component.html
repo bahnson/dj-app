@@ -27,7 +27,7 @@
         </mat-form-field>
     </div>
 
-    <div    id="transition-details-wrapper" 
+    <div    id="track-list" 
             fxFlex="grow" 
             fxLayout="row" 
             style="overflow-y: scroll;">
@@ -37,7 +37,7 @@
             <mat-list-option *ngFor="let track of tracks" (mouseover)="selectedTrack = track">
             
                 <mat-icon mat-list-icon> music_note </mat-icon>
-                <div mat-line>{{track.title}}</div>
+                <div mat-line> {{track.title}} </div>
                 <div mat-line> {{track.artist}} </div>
     
                 <div class="track-properties" >

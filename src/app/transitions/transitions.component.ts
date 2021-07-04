@@ -29,7 +29,6 @@ export class TransitionsComponent {
       this.fromTrack = this._trackService.getTrackById(fromTrackId)
       this.toTrack = this._trackService.getTrackById(toTrackId)
       this.transition = this._transitionsService.getTransitionFor(this.fromTrack, this.toTrack)
-      console.log("transition:" + this.transition.fromId + "->" + this.transition.toId)
     }
   }
 

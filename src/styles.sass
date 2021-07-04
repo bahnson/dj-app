@@ -14,6 +14,15 @@ html, body
     background: linen // TODO theme primary or blended
     border-radius: 10px
 
+// erase paddings for specific form fields
+#playing-tab track-search div.mat-form-field-wrapper
+    margin-bottom: -1.25em // Hack to get rid of padding-bottom
+
+#playing-tab track-search div.mat-form-field-flex
+    padding-top: 0px
+    padding-bottom: 0px
+    border-radius: 0px
+
 mat-card.transition-instruction div.mat-form-field-wrapper
     margin-bottom: -1.25em // Hack to get rid of padding-bottom
 
@@ -21,4 +30,3 @@ mat-card.transition-instruction div.mat-form-field-flex
     padding-top: 0px
     padding-bottom: 0px
     border-radius: 0px
-

@@ -1,65 +1,39 @@
 <div id="playing-tab" fxLayout="column" fxFill>
-
-    <track-search   [label]="'Choose starter ...'"
+    
+    <!-- TODO known starters as input recommendedTracks -->
+    <track-search   [label]="trackBacklog.length === 0 ? 'Choose starter ...' : ''"
+                    [enabled]="changeLastTrackEnabled()"
                     [tracks]="tracks"
-                    [selectedTrack]="fromTrack"
-                    (onTrackSelected)="selectFromTrack($event)" 
-                    (onTrackCleared)="clearFromTrack()">
+                    [selectedTrack]="currentTrack"
+                    (onTrackSelected)="selectCurrentTrack($event)" 
+                    (onTrackCleared)="currentTrack = null">
     </track-search>
 
-    <track-search   [label]="'Choose starter ...'"
+    <!-- TODO known matches as input recommendedTracks -->
+    <track-search   *ngIf="currentTrack"
+                    [label]="'Choose next ...'"
                     [tracks]="tracks"
-                    [selectedTrack]="fromTrack"
-                    (onTrackSelected)="selectFromTrack($event)" 
-                    (onTrackCleared)="clearFromTrack()">
+                    [selectedTrack]="nextTrack"
+                    [confirmationEnabled]="true"
+                    (onTrackSelected)="selectNextTrack($event)" 
+                    (onTrackConfirmed)="continueSet()"
+                    (onTrackCleared)="nextTrack = null">
     </track-search>
     
-    <div id="current">
-    
-        <div class="label"> A: </div>
-    
-        <!--track  [track]="currentTrack" 
-                [disabled]="true" /-->
-    </div>
-    
-    <div id="nextCandidate">
-        
-        <div class="label"> B: </div>
-    
-        <!--track  [track]="nextCandidate"
-                [disabled]="true" /-->
-    </div>
-    
-    <div id="transition">
-    
-        Transition:
-    
-        <button id="select-track"
-                (click) = "selectCandidateAsNext()"> Select </button>
-    </div>
-    
-    <div id="next">
-        
-        <div id="next-from-known">
-            
-            Known Matches
-    
-            <div class="track-adder" (drop)="onDrop($event)" (dragover)="onDragOver($event)"> + </div>
-            
-            <!--track  *ngFor="let track of matchingTracks" 
-                    [track]="track"
-                    (click)="selectNextCandidate(track)" /-->
-        </div>
-    
-        <div id="next-from-all">
-            
-            All
-    
-            <div class="track-adder" (drop)="onDrop($event)" (dragover)="onDragOver($event)"> + </div>
-            
-            <!--track  *ngFor="let track of tracks" 
-                    [track]="track"
-                    (click)="selectNextCandidate(track)" /-->
-        </div>
+    <div    id="transition-details-wrapper" 
+            fxFlex="grow" 
+            fxLayout="row" 
+            style="overflow-y: scroll;">
+
+        <transition-details *ngIf="currentTrack && nextTrack; else selectionNotice"
+                            [transition]="transition" 
+                            [editable]="false"
+                            (onChange)="updateTransition()"
+                            fxFill>
+        </transition-details>
+
+        <ng-template #selectionNotice>
+            <div fxFill> Please select from and to </div>
+        </ng-template> 
     </div>
 </div>
