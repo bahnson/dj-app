@@ -2,7 +2,7 @@
 let app = require('electron').remote.app
 let fs = require('fs')
 
-const appDataPath = app.getAppPath() + '/src/data' // alternative: app.getPath('appData') + '/dj-app'
+const appDataPath = app.getAppPath() + '/src/data' // production: app.getPath('appData') + '/dj-app'
 
 if (!fs.existsSync(appDataPath)) {
     fs.mkdirSync(appDataPath)
@@ -17,7 +17,7 @@ const appStateFile = appDataPath + '/app-state.json'
 
 if (fs.existsSync(appStateFile)) {
     appState = JSON.parse(fs.readFileSync(appStateFile).toString())
-}
+} 
 
 Object.defineProperty(window, 'appState', { value: appState, writable: false })
 Object.defineProperty(window, 'persistAppState', { 
