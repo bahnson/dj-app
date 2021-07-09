@@ -22,8 +22,8 @@ The app is based on [maximegris' angular-electron template](https://github.com/m
 
 # Introduction
 
-Run ``` npm start ``` in the terminal window.
-In the app, switch to the library tab and drag music files there, to get the app to know about your tracks. Files are expected to match pattern <artist>-<track>.<extension>.
+Run ``` npm start ``` in the terminal window to start the app.
+In the app, switch to the library tab and drag music files there, to get the app to know about your tracks. Files are expected to match pattern: artist-track.extension.
 After import, switch to the transition tag ...
 
 /!\ Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
