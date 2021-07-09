@@ -12,68 +12,25 @@
 # dj-app
 
 Dj app that helps with logging transitions and organizing sets based on your track library.
-The app is based on [maximegris' angular-electron template](https://github.com/maximegris/angular-electron)
+The app is based on [maximegris' angular-electron template](https://github.com/maximegris/angular-electron) - big hat tip to maximegris!
 
 # Prerequisites
 
-You need:
-- Nodejs
 - Git 
-
-If you want to contribute and generate Angular modules, components, services, directives, you should install `@angular/cli` in npm global context.
-
-``` bash
-npm install -g @angular/cli
-```
-
-Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
-
+- Nodejs
+- Angular CLI
 
 # Introduction
 
-Bootstrap and package your project with Angular 10 and Electron 9 (Typescript + SASS + Hot Reload) for creating Desktop applications.
-
-Currently runs with:
-
-- Angular v11.0.3
-- Electron v11.0.3
-- Electron Builder v22.9.1
-
-With this sample, you can :
-
-- Run your app in a local development environment with Electron & Hot reload
-- Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & Mac
+Run ``` npm start ``` in the terminal window.
+In the app, switch to the library tab and drag music files there, to get the app to know about your tracks. Files are expected to match pattern <artist>-<track>.<extension>.
+After import, switch to the transition tag ...
 
 /!\ Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
 
-/!\ Angular 11.x CLI needs Node 10.13 or later to work correctly.
-
-## Getting Started
-
-Clone this repository locally :
-
-``` bash
-git clone https://github.com/maximegris/angular-electron.git
-```
-
-Install dependencies with npm :
-
-``` bash
-npm install
-```
+# Misc
 
 There is an issue with `yarn` and `node_modules` when the application is built by the packager. Please use `npm` as dependencies manager.
-
-
-If you want to generate Angular components with Angular-cli , you **MUST** install `@angular/cli` in npm global context.
-Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
-
-``` bash
-npm install -g @angular/cli
-```
-
-## To build for development
 
 - **in a terminal window** -> npm start
 
