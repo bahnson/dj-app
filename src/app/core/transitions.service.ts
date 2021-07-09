@@ -59,7 +59,7 @@ export class TransitionsService {
   }
 
   persistTransitions() {
-    
+
     if (!window["persistTransitions"]) {
     
       throw new Error("no backend function for persisting transitions")

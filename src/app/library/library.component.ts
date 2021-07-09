@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Track } from '../core/data-model/track'
+import { Stars, Track, TrimRange } from '../core/data-model/track'
 import { TracksService } from '../core/tracks.service'
 
 @Component({
@@ -42,7 +42,7 @@ export class LibraryComponent {
       
       if (matchGroups) {
 
-        addedTracks.push( new Track(matchGroups[1].trim(), matchGroups[2].trim()))
+        addedTracks.push( new Track(matchGroups[1].trim(), matchGroups[2].trim(), 0, 0, []))
         continue
       }
 
@@ -50,7 +50,7 @@ export class LibraryComponent {
 
       if (matchGroups) {
 
-        addedTracks.push( new Track(Track.UNKNOWN_ARTIST, matchGroups[1].trim()))
+        addedTracks.push( new Track(Track.UNKNOWN_ARTIST, matchGroups[1].trim(), 0, 0, []))
         continue
       }
     }
@@ -70,8 +70,23 @@ export class LibraryComponent {
     event.preventDefault()
   }
 
-  updateTrack(track: Track) {
+  setStars(track: Track, stars: Stars) {
 
+    if (stars === 1 && track.stars === 1) {
+
+      track.stars = 0
+
+    } else {
+
+      track.stars = stars
+    }
+
+    this._trackService.persistTracks()
+  }
+
+  setTrim(track: Track, trim: TrimRange) {
+
+    track.trim = trim
     this._trackService.persistTracks()
   }
 }

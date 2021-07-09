@@ -12,10 +12,13 @@ export class Track {
     tags: string[] = []
     genres: string[] = []
 
-    constructor (artist: string, title: string) {
+    constructor (artist: string, title: string, trim: TrimRange, stars: Stars, tags: string[]) {
 
         this.artist = artist
         this.title = title
+        this.stars = stars
+        this.trim = trim,
+        this.tags = tags
     }
 
     get id() : string {
@@ -26,7 +29,7 @@ export class Track {
 export type TrackId = string
 
 // Trim wheel position from -5 to 5 in 0.25 steps
-type TrimRange =    -5 | -4.75 | -4.5 | -4.25 |
+export type TrimRange =    -5 | -4.75 | -4.5 | -4.25 |
                     -4 | -3.75 | -3.5 | -3.25 | 
                     -3 | -2.75 | -2.5 | -2.25 |
                     -2 | -2.75 | -2.5 | -2.25 |
@@ -38,5 +41,5 @@ type TrimRange =    -5 | -4.75 | -4.5 | -4.25 |
                      4 |  4.25 |  4.5 |  4.75 |
                      5
 
-type Stars = 0 | 1 | 2 | 3 | 4 | 5
+export type Stars = 0 | 1 | 2 | 3 | 4 | 5
 

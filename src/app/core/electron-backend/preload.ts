@@ -25,7 +25,7 @@ Object.defineProperty(window, 'persistAppState', {
     value: (newAppState) => {
         
         if (!newAppState) return
-        fs.writeFileSync(appStateFile, JSON.stringify(newAppState)
+        fs.writeFileSync(appStateFile, JSON.stringify(newAppState, null, 4)
     )}, 
     writable: false 
 })
@@ -47,7 +47,7 @@ Object.defineProperty(window, 'persistTracks', {
     value: (newTrackData) => {
         
         if (!newTrackData) return
-        fs.writeFileSync(trackDataFile, JSON.stringify(newTrackData)
+        fs.writeFileSync(trackDataFile, JSON.stringify(newTrackData, null, 4)
     )},
     writable: false 
 })
@@ -69,7 +69,10 @@ Object.defineProperty(window, 'persistTransitions', {
     value: (newTransitionData) => {
         
         if (!newTransitionData) return
-        fs.writeFileSync(transitionDataFile, JSON.stringify(newTransitionData)
+
+        newTransitionData = newTransitionData.filter(t => t.instructions.length > 0)
+
+        fs.writeFileSync(transitionDataFile, JSON.stringify(newTransitionData, null, 4)
     )},
     writable: false 
 })

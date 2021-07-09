@@ -84,9 +84,18 @@ export class TransitionDetailsComponent {
     })
   }
 
+  moveInstruction(index: number, upOrDown: string) {
+
+    let extracted = this.transition.instructions.splice(index, 1)
+    let insertIndex = upOrDown === 'up' ? index - 1 : index + 1
+    this.transition.instructions.splice(insertIndex, 0, extracted[0])
+    this.onDetailsChanged()
+  }
+
   removeInstruction(i: TransitionInstruction) {
 
     this.transition.instructions = this.transition.instructions.filter(item => item !== i)
+    this.onDetailsChanged()
   }
 
   onDetailsChanged() {

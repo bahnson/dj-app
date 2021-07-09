@@ -10,19 +10,18 @@
         <mat-form-field fxFlex="grow" appearance="standard" [color]="'accent'">
             
             <mat-label> 
-                
                 <mat-icon> music_note </mat-icon> 
-                Filter 
-            
+                Filter   
             </mat-label>
             
             <input  type="text" placeholder="Type ..."
                     matInput 
                     [(ngModel)]="filterString">
                     
-            
             <button type="button" mat-button *ngIf="filterString" matSuffix mat-icon-button (click)="filterString = ''">
+      
                 <mat-icon>close</mat-icon>
+      
             </button>
         </mat-form-field>
     </div>
@@ -48,11 +47,11 @@
                                 [thumbLabel]="true"
                                 [tickInterval]="2"
                                 [(ngModel)]="track.trim"
-                                (change)="updateTrack(track)">
+                                (change)="setTrim(track, $event.value)">
                     </mat-slider>
     
                     <mat-icon   *ngFor="let s of [1,2,3,4,5]; index as i"
-                                (click)="track.stars = i+1; updateTrack()"
+                                (click)="setStars(track, i+1);"
                                 (mouseover)="selectedStars = i + 1" 
                                 (mouseleave)="selectedStars = 0"> 
                         

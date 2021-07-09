@@ -16,7 +16,7 @@ export class TracksService {
 
     window["tracks"].forEach(item => {
       
-      this.tracks.push(new Track(item.artist, item.title))
+      this.tracks.push(new Track(item.artist, item.title, item.trim, item.stars, item.tags))
     });
   }
 
@@ -43,8 +43,10 @@ export class TracksService {
   getTrackById(id: string) : Track {
 
     for (const t of this.tracks) {
-      console.log(id + ' == ' + t.id)
-      if (t.id === id) return t
+      
+      if (t.id === id) {
+        return t
+      }
     }
 
     return null

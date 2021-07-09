@@ -1,4 +1,4 @@
-<mat-card   *ngFor="let i of instructions"
+<mat-card   *ngFor="let i of instructions; index as idx"
             fxLayout="column"
             (mouseover)="onMouseOver(i)" 
             (mouseleave)="onMouseLeave(i)"
@@ -12,10 +12,28 @@
         <button mat-icon-button 
                 *ngIf="isEditable(i)"
                 [color]="'accent'"
-                (click)="removeInstruction(i)">
+                (click)="moveInstruction(idx, 'up')">
     
-            <mat-icon> clear </mat-icon>
+            <mat-icon> arrow_upward </mat-icon>
         </button>
+
+        
+        <button mat-icon-button 
+                *ngIf="isEditable(i)"
+                [color]="'accent'"
+                (click)="moveInstruction(idx, 'down')">
+                
+            <mat-icon> arrow_downward </mat-icon>
+        </button>
+    
+    <button mat-icon-button 
+            *ngIf="isEditable(i)"
+            [color]="'accent'"
+            (click)="removeInstruction(i)">
+
+        <mat-icon> clear </mat-icon>
+    </button>
+
     </div>
     
     <div fxLayout="column">
