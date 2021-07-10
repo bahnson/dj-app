@@ -26,7 +26,13 @@ Run ``` npm start ``` in the terminal window to start the app.
 In the app, switch to the library tab and drag music files there, to get the app to know about your tracks. Files are expected to match pattern: &lt;artist&gt;-&lt;track&gt;.&lt;extension&gt;.
 After import, switch to the transition tag ...
 
-/!\ Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
+(!) Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
+
+# TODO
+
+- suggestion component, suggestion service, track-graph
+- transition-details-wrapper into transition details
+- download mat-icons and ship under assets 
 
 # Misc
 
